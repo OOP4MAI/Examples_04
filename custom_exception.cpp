@@ -1,13 +1,22 @@
 #include <cmath>
 #include <iostream>
 #include <exception>
+#include <string>
 
-class WrongArgumentException : public std::exception {
-public:
+struct WrongArgumentException : public std::exception {
+    int a,b,c;
+    WrongArgumentException(int aa,int bb, int cc): a(aa),b(bb),c(cc){
+    
+    }
 
-    virtual const char* what() {
-        //throw int(1);
-        return "Wrong argument exception";
+    void foo(){
+        
+    }
+    const char* what() const noexcept override{
+        throw int(1);
+        std::string str("Wrong argument exception a=");
+        str+=std::to_string(a);
+        return str.c_str();
     }
 };
 
@@ -18,7 +27,7 @@ private:
 	double c;
 public:
 	SquareEquation(double aa,double bb,double cc): a(aa),b(bb),c(cc){
-         if((b*b-4*a*c)<0) throw WrongArgumentException();
+         if((b*b-4*a*c)<0) throw WrongArgumentException(a,b,c);
 	}
 
 	double FindX1(){
@@ -49,7 +58,13 @@ int main(){
 		std::cout << "X2=" << se.FindX2() << "\n";
     
     }catch(WrongArgumentException &ex){
+
+        if(ex.a==1) std::cout << "Ooops!" << std::endl;
+        try{
         std::cout << "Exception in runtime:" << ex.what() << std::endl;
+        }catch(int){
+            std::cout << "foo" << std::endl;
+        }
     }
     
     return 0;

@@ -2,7 +2,7 @@
 using namespace std;
 
 void term_func() {
-    cout << "term_func was called by terminate." << endl;
+    cout << "My term_func was called by terminate." << endl;
     exit(-1);
 }
 

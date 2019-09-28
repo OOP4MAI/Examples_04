@@ -39,7 +39,7 @@ int main(){
     if(!result) std::cout << "4/0 has no reasons" << std::endl;
 
     try{
-        c = calculate_div(4,0);
+        std::cout << "result:" << calculate_div(4,0) << std::endl;
     }catch(std::exception& ex){ //try to remove &
         std::cout << ex.what() << std::endl;
     }

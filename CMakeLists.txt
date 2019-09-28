@@ -26,12 +26,6 @@ set_target_properties(for PROPERTIES
        CXX_STANDARD_REQUIRED ON
        )  
 
-add_executable(initializers initializers.cpp)
-set_target_properties(initializers PROPERTIES
-       CXX_STANDARD 17
-       CXX_STANDARD_REQUIRED ON
-       )  
-
 add_executable(return_error return_error.cpp)
 set_target_properties(return_error PROPERTIES
        CXX_STANDARD 14

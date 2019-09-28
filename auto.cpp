@@ -39,7 +39,11 @@ void motivation() {
 }
 
 
-
+struct A{
+	A(std::initializer_list<int> a){
+		std::cout << a.size() << std::endl;
+	}
+};
 void example_types() {
 
 	int i = 0;
@@ -50,9 +54,10 @@ void example_types() {
 
 	auto errorstr = "Hello"; // errorstr type ?
 
-	const volatile int crefint = 42; //error because of reference
-	auto acrefint = crefint; // still int
+	const int crefint = 42; //error because of reference
+	const auto acrefint = crefint; // const int
 
+	A a({1, 2, 3, 4, 5, 6, 7});
 	auto il = {1, 2, 3, 4, 5, 6, 7};
 
 }
@@ -69,12 +74,12 @@ auto someFunction3(int a, float b) { // return type ?
 //	return a;
 //}
 
-// auto someFunction4(int a, float b) //-> int{ // return type ?
-// 	if (a)
-// 		return a;
-// 	else
-// 		return b;
-// }
+ auto someFunction4(int a, float b) -> int{ // return type ?
+ 	if (a)
+ 		return a;
+ 	else
+ 		return b;
+ }
 
 int main(int, char *[])
 {
